@@ -1,0 +1,60 @@
+<div class="container">
+  <h1 class="text-center">Them Phim</h1>
+  <div class="row">
+    <div class="col-sm-6 mx-auto">
+      <form [formGroup]="form" (ngSubmit)="(handleAddMovie)">
+        <div>
+          <mat-form-field class="example-full-width">
+            <mat-label>Ten Phim</mat-label>
+            <textarea formControlName="tenPhim" matInput></textarea>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="example-full-width">
+            <mat-label>Bi Danh</mat-label>
+            <textarea formControlName="biDanh" matInput></textarea>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="example-full-width">
+            <mat-label>trailer</mat-label>
+            <textarea formControlName="trailer" matInput></textarea>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <button mat-raised-button color="primary" (click)="hinhAnh.click()">
+            File
+          </button>
+          <input
+            type="button"
+            hidden
+            type="file"
+            #hinhAnh
+            (change)="handleChangeFile($event)"
+          />
+          <img
+            *ngIf="imageReview"
+            [src]="imageReview"
+            alt=""
+            width="50px"
+            height="50px"
+          />
+        </div>
+        <div>
+          <mat-form-field class="example-full-width">
+            <mat-label>Mo Ta</mat-label>
+            <textarea formControlName="moTa" matInput></textarea>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="example-full-width">
+            <mat-label>Ngay Khoi CHieu</mat-label>
+            <textarea formControlName="ngayKhoiChieu" matInput></textarea>
+          </mat-form-field>
+        </div>
+        <button (click)="handleAddMovie()" type="submit">Them Phim</button>
+      </form>
+    </div>
+  </div>
+</div>

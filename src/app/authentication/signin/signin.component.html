@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <form [formGroup]="signinForm" (ngSubmit)="xuLyDangNhap()">
+        <div class="form-group">
+          <label for="taiKhoan">Tài Khoản</label>
+          <input
+            type="text"
+            id="taiKhoan"
+            name="taiKhoan"
+            class="form-control"
+            formControlName="taiKhoan"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="
+              signinForm.get('taiKhoan').invalid &&
+              (signinForm.get('taiKhoan').touched ||
+                signinForm.get('taiKhoan').dirty)
+            "
+          >
+            <span *ngIf="signinForm.get('taiKhoan').errors.required">
+              Tài khoản không được để trống
+            </span>
+            <span
+              *ngIf="
+                signinForm.get('taiKhoan').errors.minlength ||
+                signinForm.get('taiKhoan').errors.maxlength
+              "
+              >Tài khoản phải từ 3-20 kí tự</span
+            >
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="matKhau">Mật Khẩu</label>
+          <input
+            type="password"
+            id="matKhau"
+            name="matKhau"
+            class="form-control"
+            formControlName="matKhau"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="
+              signinForm.get('matKhau').invalid &&
+              (signinForm.get('matKhau').touched ||
+                signinForm.get('matKhau').dirty)
+            "
+          >
+            <span *ngIf="signinForm.get('matKhau').errors.required"
+              >Mật khẩu không được để trống</span
+            >
+            <!-- <span *ngIf="signinForm.get('matKhau').errors.pattern"
+              >Mật khẩu từ 5 kí tự và có ít nhất 1 chữ viết hoa và 1 số và 1 chữ
+              thường</span
+            > -->
+          </div>
+        </div>
+        <button class="btn btn-success">Đăng Nhập</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<!-- [ngClass]="{'tên class1':điều kiện1,'class2':dk2}" -->
+<p
+  appHightlightDirectives
+  class="bg-primary"
+  [class]="{ 'text-center': isActive, 'text-light': isActive }"
+>
+  ngClass
+</p>
+<!-- [ngStyle]="{
+    'thuộc tính css':value,
+    'background-color':color
+}" -->
+<div
+  style="height: 300px; width: 100%"
+  [ngStyle]="{ 'background-image': 'url(' + url + ')' }"
+></div>
+<p appHightlightDirectives ngNonBindable>{{ message }}</p>
+<br /><br /><br />
+<p appHightlightDirectives>hightLight</p>

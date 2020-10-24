@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="col-12 text-center" *ngIf="loading">LOADING..........</div>
+</div>
+<div class="container">
+  <div class="col-12 text-center" *ngIf="error">
+    {{ error || "something went wrong" }}
+  </div>
+</div>
+<div class="container">
+  <div class="row" *ngIf="movieDetail">
+    <div class="card w-100">
+      <div class="card-body">
+        <h4 class="card-title">{{ movieDetail.tenPhim }}</h4>
+        <h6 class="card-subtitle text-muted">{{ movieDetail.moTa }}</h6>
+      </div>
+      <iframe
+        width="560"
+        height="315"
+        [src]="movieDetail.trailer"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+</div>

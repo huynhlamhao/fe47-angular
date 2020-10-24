@@ -1,0 +1,43 @@
+<!-- interpolation -->
+<p>{{ message }}</p>
+<!-- property binding -->
+<input type="text" [value]="message" />
+<button [disabled]="disabled">click</button>
+<br />
+<br />
+<br />
+<!-- event binding -->
+<!-- <input type="text" [value]="message" /> -->
+<button (click)="changeMessage('hello bros!')">change message</button>
+<br />
+<br />
+<br />
+<p>{{ userName }}</p>
+<input type="text" #name />
+<button (click)="changeUserName(name)">change username</button>
+<br />
+<br />
+<br />
+<p>{{ email }}</p>
+<input type="text" [value]="email" (input)="changeEmail($event)" />
+<br />
+<br />
+<br />
+<p>{{ address }}</p>
+<!-- FormsModule -->
+<!-- two Way binding -->
+<input type="text" [(ngModel)]="address" />
+<br />
+<br />
+<br />
+<div class="form-group">
+  <label for="email">Email</label>
+  <input id="email" type="text" class="form-control" [(ngModel)]="email" />
+  <label for="fullName">Full Name</label>
+  <input type="text" class="form-control" id="fullName" #fullname />
+  <button class="btn btn-success" (click)="fullName = fullname.value">
+    submit
+  </button>
+  <p>{{ email }}</p>
+  <p>{{ fullName }}</p>
+</div>

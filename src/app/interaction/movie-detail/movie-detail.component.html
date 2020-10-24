@@ -1,0 +1,8 @@
+<h1>Chi tiết</h1>
+<div *ngIf="movieDetail" class="row">
+  <div class="col-sm-6"><img [src]="movieDetail.hinhAnh" alt="" /></div>
+  <div class="col-sm-6">
+    <h1>{{ movieDetail.tenPhim }}</h1>
+    <p>{{ movieDetail.gia }}</p>
+  </div>
+</div>

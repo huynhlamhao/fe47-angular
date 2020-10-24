@@ -1,0 +1,8 @@
+<button
+  class="btn ghe"
+  [class]="{ gheDaDat: ghe.TrangThai, gheDangDat: dangDat }"
+  [disabled]="ghe.TrangThai"
+  (click)="datGhe()"
+>
+  {{ ghe.SoGhe }}
+</button>

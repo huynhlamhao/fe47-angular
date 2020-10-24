@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row" *ngIf="loading">
+    <!-- TODO:<app-loading> -->
+    <div class="col-sm-12 text-center">loading</div>
+  </div>
+  <div class="row" *ngIf="error">
+    <!-- TODO:<app-error> -->
+    <div class="col-sm-12 text-center">
+      {{ error || "something went wrong" }}
+    </div>
+  </div>
+  <div class="row" *ngIf="movieList">
+    <div class="col-3" *ngFor="let movie of movieList">
+      <img class="card-img-top" [src]="movie.hinhAnh" alt="" />
+      <div class="card-body">
+        <!-- pipe format uppercase lowercase -->
+        <h4 class="card-title">{{ movie.tenPhim | uppercase }}</h4>
+        <!-- pipe format percent -->
+        <!-- <p class="card-text">{{ 0.5 | percent }}</p> -->
+        <p class="card-text">{{ movie.moTa | shortcut }}</p>
+        <!-- pipe format curentcy -->
+        <p>{{ 50 | currency: "VND" }}</p>
+        <!-- pipe format datetime -->
+        <h4 class="card-title">
+          {{ movie.ngayKhoiChieu | date: "dd/MM/yyyy hh:mm" }}
+        </h4>
+      </div>
+      <button class="btn btn-success" routerLink="/movie/{{ movie.maPhim }}">
+        Chi tiết
+      </button>
+    </div>
+  </div>
+</div>

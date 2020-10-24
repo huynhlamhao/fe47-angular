@@ -1,0 +1,68 @@
+<!-- ngIf dùng để ẩn hiện component theo điều kiện -->
+<p *ngIf="isShowing">structural-directives works!</p>
+<button (click)="isShowing = !isShowing">toggle</button>
+
+<div *ngIf="isLoggedIn; else login">
+  <h3>WelCome back</h3>
+  <button (click)="isLoggedIn = false">Logout</button>
+</div>
+<!-- cách 1 : phủ định-->
+<!-- <div *ngIf="!isLoggedIn">
+  <h3>Please Login</h3>
+  <button (click)="isLoggedIn = true">Login</button>
+</div> -->
+<!-- cách 2 :dùng else -->
+<!--những gì nằm trong ng-template mặc định sẽ không được hiển thị ra -->
+<!-- chỉ được hiển thị ra khi được gọi tới nó -->
+<ng-template #login>
+  <div>
+    <h3>Please Login</h3>
+    <button (click)="isLoggedIn = true">Login</button>
+  </div>
+</ng-template>
+<br /><br />
+<!-- ngSwitch:ẩn hiện component hoặc view theo nhiều điều kiện -->
+<div [ngSwitch]="color">
+  <!-- *ngSwitchCase="red"=>red là biến -->
+  <div *ngSwitchCase="'red'" style="background-color: red">red</div>
+  <div *ngSwitchCase="'blue'" style="background-color: blue">blue</div>
+  <div *ngSwitchCase="'yellow'" style="background-color: yellow">yellow</div>
+  <div *ngSwitchDefault>default</div>
+</div>
+<select [value]="color" (change)="color = $event.target.value">
+  <option value="">Default</option>
+  <option value="red">red</option>
+  <option value="blue">blue</option>
+  <option value="yellow">yellow</option>
+</select>
+
+<!-- ngFor:duyệt mảng trong html -->
+
+<div>
+  <ng-container *ngIf="dssv">
+    <!-- ng-container tương tự Fragment trong react, thẻ này sẽ k được render ra giao diện
+     -->
+    <p *ngFor="let sv of dssv; let i = index">
+      Stt:{{ i + 1 }}---Họ tên:{{ sv.hoTen }}--Lớp:{{ sv.lop }}
+    </p>
+  </ng-container>
+</div>
+<!-- ngContainer + ngTemplate -->
+<ng-template #layoutTemplate>
+  <p>đây là layout lặp lại nhiều lần</p>
+</ng-template>
+<ng-container *ngTemplateOutlet="layoutTemplate"></ng-container>
+<ng-container *ngTemplateOutlet="layoutTemplate"></ng-container>
+<ng-container *ngTemplateOutlet="layoutTemplate"></ng-container>
+
+<!-- ng-content -->
+<app-card>
+  <div slot="header">Header</div>
+  <div slot="content">Content</div>
+  <div slot="footer">Footer</div>
+</app-card>
+<app-card>
+  <div slot="header">Sinh Viên</div>
+  <div slot="content">Họ Tên:Hào---Lớp:Fe47</div>
+  <div slot="footer"><Button class="btn btn-success">Submit</Button></div>
+</app-card>

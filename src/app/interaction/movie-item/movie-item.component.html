@@ -1,0 +1,8 @@
+<div class="card text-center">
+  <img class="card-img-top" [src]="movie.hinhAnh" />
+  <div class="card-body">
+    <h4 class="card-title">Tên phim:{{ movie.tenPhim }}</h4>
+    <p class="card-text">Giá:{{ movie.gia }}</p>
+    <button class="btn btn-success" (click)="viewDetail()">Chi tiết</button>
+  </div>
+</div>
